@@ -63,13 +63,13 @@ jobs:
             github.rest.git.listMatchingRefs({
               owner: context.repo.owner,
               repo: context.repo.repo,
-              ref: 'tags/${{ needs.calculate-version.outputs.version }}''
+              ref: 'tags/${{ needs.calculate-version.outputs.version }}'
             }).then(result => {
               console.log(result)
 
               const exactMatched = result.data.filter((entry) => entry.ref === 'refs/tags/${{ needs.calculate-version.outputs.version }}')
               if(exactMatched.length == 0) {
-                console.log(`Tagging with ${tagVersion}`)
+                console.log('Tagging with ${{ needs.calculate-version.outputs.version }}')
                 github.rest.git.createRef({
                   owner: context.repo.owner,
                   repo: context.repo.repo,
