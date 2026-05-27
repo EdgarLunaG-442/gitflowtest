@@ -49,12 +49,12 @@ jobs:
 
   linter-check:
     uses: ./.github/workflows/linter.yaml
-    needs: [ calculate-version, prepare-files ]
+    needs: [ prepare-files ]
 
 
   update_version_file:
     runs-on: self-hosted-prod
-    needs: [ prepare-files, calculate-version ]
+    needs: [ calculate-version, linter-check ]
     steps:
       - uses: actions/checkout@v4
         with:
@@ -133,7 +133,7 @@ jobs:
 
   github_release:
     runs-on: self-hosted-prod
-    needs: [ calculate-version ]
+    needs: [ calculate-version, update_version_file ]
     if: github.ref == 'refs/heads/main'
     steps:
       - uses: actions/checkout@v4
