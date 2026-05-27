@@ -35,7 +35,7 @@ branches:
   pull-request:
     regex: "^(pull-requests|pull|pr)[\\/-](?<Number>\\d*)"
     increment: Inherit
-    label: 'PullRequest{number}'
+    label: 'PullRequest{Number}'
     source-branches: ['develop', 'main', 'release', 'feature', 'hotfix']
 
 ignore:
