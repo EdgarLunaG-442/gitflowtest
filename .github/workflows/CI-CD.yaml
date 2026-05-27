@@ -5,10 +5,8 @@ on:
   push:
     branches:
       - 'feature/**'
-      - develop
       - 'release/**'
       - 'hotfix/**'
-      - main
 
   pull_request:
     branches:
