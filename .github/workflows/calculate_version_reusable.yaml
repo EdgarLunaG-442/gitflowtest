@@ -9,10 +9,6 @@ on:
         required: false
         type: string
         default: "0"
-      GIT_CHECKOUT_REF:
-        required: false
-        type: string
-        default: ${{ github.head_ref }}
       VERSION_USE_CONFIG_FILE:
         required: false
         type: boolean
@@ -45,7 +41,6 @@ jobs:
         uses: actions/checkout@v6
         with:
           fetch-depth: ${{ inputs.GIT_CHECKOUT_DEPTH }}
-          ref: ${{ inputs.GIT_CHECKOUT_REF }}
           token: ${{ secrets.CI_PAT }}
 
 
