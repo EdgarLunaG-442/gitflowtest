@@ -10,6 +10,7 @@ branches:
     regex: ^dev(elop)?(ment)?$
     increment: Minor
     label: ''
+    is-main-branch: true
     tracks-release-branches: true
     source-branches: ['main', 'release', 'feature', 'hotfix']
 
@@ -23,7 +24,8 @@ branches:
   hotfix:
     regex: ^hotfix[/-]
     increment: Patch
-    label: beta
+    label: ''
+    is-main-branch: true
     source-branches: ['main']
 
   feature:
@@ -35,7 +37,7 @@ branches:
   pull-request:
     regex: "^(pull-requests|pull|pr)[\\/-](?<Number>\\d*)"
     increment: Inherit
-    label: 'PullRequest{Number}'
+    label: 'PullRequest-{Number}'
     source-branches: ['develop', 'main', 'release', 'feature', 'hotfix']
 
 ignore:
