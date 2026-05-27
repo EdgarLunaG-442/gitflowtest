@@ -3,6 +3,7 @@ branches:
     regex: ^main$
     increment: None
     is-mainline: true
+    tracks-release-branches: false
     tag: ''
     source-branches: ['release', 'hotfix']
 
@@ -57,6 +58,8 @@ branches:
     is-mainline: false
     track-merge-target: false
     source-branches: ['develop', 'main', 'release', 'feature', 'hotfix']
+
+no-bump-message: "^Merge branch '(dev|develop|main)(ment)?' into release"
 
 ignore:
   sha: []
