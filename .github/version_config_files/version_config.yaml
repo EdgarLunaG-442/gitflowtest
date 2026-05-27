@@ -27,15 +27,15 @@ branches:
     source-branches: ['main']
 
   feature:
-    regex: ^feature[/-]
+    regex: "^features?[\\/-](?<BranchName>.+)"
     increment: Inherit
-    label:  'feature-{BranchName}'
+    label: "feature-{BranchName}"
     source-branches: ['develop', 'feature']
 
   pull-request:
-    regex: ^(pull|pull\-requests|pr)[/-]
+    regex: "^(pull-requests|pull|pr)[\\/-](?<Number>\\d*)"
     increment: Inherit
-    label: 'PullRequest{number}'
+    label: 'PullRequest{Number}'
     source-branches: ['develop', 'main', 'release', 'feature', 'hotfix']
 
 ignore:
