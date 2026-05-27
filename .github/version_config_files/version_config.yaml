@@ -32,7 +32,7 @@ branches:
   feature:
     regex: ^feature[/-]
     increment: Inherit
-    label: "feature-{BranchName}"
+    label: "feature-{branchName}"
     source-branches: ['develop', 'feature']
 
   pull-request:
