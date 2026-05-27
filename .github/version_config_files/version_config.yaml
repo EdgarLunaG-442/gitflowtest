@@ -15,7 +15,7 @@ branches:
   release:
     regex: ^release[/-]
     increment: Major
-    tag: beta
+    tag: "beta"
     prevent-increment-of-merged-branch-version: false
     track-merge-target: true
     tracks-release-branches: false
@@ -40,11 +40,12 @@ branches:
     source-branches: ['develop', 'feature']
 
   pull-request:
-    regex: "^(pull|pull\-requests|pr)[/-]"
-    increment: Inherit
-    tag-number-pattern: '[/-](?<number>\d+)[-/]'
+    regex: ^(pull|pull\-requests|pr)[/-]
     mode: ContinuousDeployment
-    tag: 'PullRequest-{number}'
+    tag: "PullRequest"
+    increment: Inherit
+    prevent-increment-of-merged-branch-version: false
+    tag-number-pattern: '[/-](?<number>\d+)[-/]'
     tracks-release-branches: false
     is-release-branch: false
     is-mainline: false
