@@ -5,11 +5,10 @@ on:
   push:
     branches:
       - 'feature/**'
-      - develop
       - 'release/**'
       - 'hotfix/**'
+      - develop
       - main
-
     paths-ignore:
       - 'VERSION'
 
