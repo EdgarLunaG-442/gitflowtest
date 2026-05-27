@@ -1,7 +1,7 @@
 branches:
   main:
     regex: ^main$
-    increment: Major
+    increment: None
     is-mainline: true
     tag: ''
     source-branches: ['release', 'hotfix']
