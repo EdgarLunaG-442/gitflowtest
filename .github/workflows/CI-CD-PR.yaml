@@ -20,7 +20,3 @@ jobs:
       VERSION_USE_CONFIG_FILE: true
       VERSION_CONFIG_FILE: ".github/version_config_files/version_config.yaml"
 
-  linter-check:
-    uses: ./.github/workflows/linter.yaml
-    needs: [ calculate-version ]
-

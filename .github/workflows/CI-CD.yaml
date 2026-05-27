@@ -47,14 +47,10 @@ jobs:
           path: content.tar.gz.gpg
           retention-days: 1
 
-  linter-check:
-    uses: ./.github/workflows/linter.yaml
-    needs: [ prepare-files ]
-
 
   update_version_file:
     runs-on: ubuntu-22.04
-    needs: [ calculate-version, linter-check ]
+    needs: [ calculate-version, prepare-files ]
     steps:
       - uses: actions/checkout@v4
         with:
@@ -64,21 +60,20 @@ jobs:
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
-            const tagVersion = ${{ needs.calculate-version.outputs.version }}
             github.rest.git.listMatchingRefs({
               owner: context.repo.owner,
               repo: context.repo.repo,
-              ref: `tags/${tagVersion}`
+              ref: 'tags/${{ needs.calculate-version.outputs.version }}''
             }).then(result => {
               console.log(result)
 
-              const exactMatched = result.data.filter((entry) => entry.ref === `refs/tags/${tagVersion}`)
+              const exactMatched = result.data.filter((entry) => entry.ref === 'refs/tags/${{ needs.calculate-version.outputs.version }}')
               if(exactMatched.length == 0) {
                 console.log(`Tagging with ${tagVersion}`)
                 github.rest.git.createRef({
                   owner: context.repo.owner,
                   repo: context.repo.repo,
-                  ref: `refs/tags/${tagVersion}`,
+                  ref: 'refs/tags/${{ needs.calculate-version.outputs.version }}',
                   sha: context.sha
                 })
               }
