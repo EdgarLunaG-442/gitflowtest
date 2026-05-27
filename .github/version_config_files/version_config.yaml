@@ -1,7 +1,6 @@
 branches:
   main:
     regex: ^main$
-    mode: Mainline
     increment: None
     is-mainline: true
     tag: ''
