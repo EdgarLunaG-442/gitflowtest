@@ -26,6 +26,7 @@ branches:
     increment: Patch
     label: ''
     is-main-branch: true
+    track-merge-target: true
     source-branches: ['main']
 
   feature:
