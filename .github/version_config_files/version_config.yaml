@@ -1,3 +1,6 @@
+workflow: GitFlow/v1
+mode: ContinuousDelivery
+
 branches:
   main:
     regex: ^main$
@@ -29,7 +32,7 @@ branches:
   feature:
     regex: ^feature[/-]
     increment: Inherit
-    label:  'feature-{BranchName}'
+    label: "{BranchName}"
     source-branches: ['develop', 'feature']
 
   pull-request:
