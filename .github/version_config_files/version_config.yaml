@@ -1,11 +1,10 @@
 workflow: GitFlow/v1
 mode: ContinuousDelivery
-tag-prefix: '[vV]?'
 
 branches:
   main:
     regex: ^main$
-    increment: Patch
+    increment: Major
     label: ''
     is-main-branch: true
     source-branches: ['release', 'hotfix']
@@ -13,36 +12,28 @@ branches:
   develop:
     regex: ^dev(elop)?(ment)?$
     increment: Minor
-    label: alpha
+    label: ''
     tracks-release-branches: true
     source-branches: ['main', 'release', 'feature', 'hotfix']
 
   release:
     regex: ^release[/-]
-    increment: Minor
+    increment: Major
     label: beta
     is-release-branch: true
-    source-branches: ['develop', 'main', 'release']
+    source-branches: ['develop', 'release']
 
   hotfix:
     regex: ^hotfix[/-]
     increment: Patch
     label: beta
-    source-branches: ['main', 'release']
-
-  # DEPRECATED: patch/* branches are kept for backward compatibility.
-  # New work should use hotfix/* instead.
-  patch:
-    regex: ^patch[/-]
-    increment: Patch
-    label: beta
-    source-branches: ['main', 'release']
+    source-branches: ['main']
 
   feature:
     regex: ^feature[/-]
     increment: Inherit
-    label: '{BranchName}'
-    source-branches: ['develop', 'main', 'release', 'feature', 'hotfix']
+    label:  'feature-{BranchName}'
+    source-branches: ['develop', 'feature']
 
   pull-request:
     regex: ^(pull|pull\-requests|pr)[/-]

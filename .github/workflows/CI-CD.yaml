@@ -30,7 +30,7 @@ jobs:
       VERSION_CONFIG_FILE: ".github/version_config_files/version_config.yaml"
 
   prepare-files:
-    runs-on: self-hosted-prod
+    runs-on: ubuntu-22.04
     needs: [ calculate-version ]
     steps:
       - name: Checkout code
@@ -53,7 +53,7 @@ jobs:
 
 
   update_version_file:
-    runs-on: self-hosted-prod
+    runs-on: ubuntu-22.04
     needs: [ calculate-version, linter-check ]
     steps:
       - uses: actions/checkout@v4
@@ -132,7 +132,7 @@ jobs:
 
 
   github_release:
-    runs-on: self-hosted-prod
+    runs-on: ubuntu-22.04
     needs: [ calculate-version, update_version_file ]
     if: github.ref == 'refs/heads/main'
     steps:
