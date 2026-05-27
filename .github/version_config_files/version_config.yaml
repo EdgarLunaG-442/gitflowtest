@@ -1,44 +1,41 @@
-workflow: GitFlow/v1
-mode: ContinuousDelivery
-
 branches:
   main:
     regex: ^main$
     increment: Major
-    tag: ''
+    label: ''
     is-main-branch: true
     source-branches: ['release', 'hotfix']
 
   develop:
     regex: ^dev(elop)?(ment)?$
     increment: Minor
-    tag: ''
+    label: ''
     tracks-release-branches: true
     source-branches: ['main', 'release', 'feature', 'hotfix']
 
   release:
     regex: ^release[/-]
     increment: Major
-    tag: 'beta'
+    label: beta
     is-release-branch: true
     source-branches: ['develop', 'release']
 
   hotfix:
     regex: ^hotfix[/-]
     increment: Patch
-    tag: 'beta'
+    label: beta
     source-branches: ['main']
 
   feature:
     regex: ^feature[/-]
     increment: Inherit
-    tag: 'feature-{BranchName}'
+    label: "feature-{BranchName}"
     source-branches: ['develop', 'feature']
 
   pull-request:
     regex: ^(pull|pull\-requests|pr)[/-]
     increment: Inherit
-    tag: 'PullRequest{number}'
+    label: 'PullRequest{number}'
     source-branches: ['develop', 'main', 'release', 'feature', 'hotfix']
 
 ignore:
