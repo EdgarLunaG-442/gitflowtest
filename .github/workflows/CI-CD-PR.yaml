@@ -1,0 +1,26 @@
+name: CI-CD-PR
+
+on:
+  pull_request:
+    branches:
+      - develop
+      - 'release/**'
+      - main
+
+env:
+  DOCKER_FILE_PATH: ./deployment/Dockerfile.prod
+
+jobs:
+
+  calculate-version:
+    uses: ./.github/workflows/calculate_version_reusable.yaml
+    secrets:
+      CI_PAT: ${{ secrets.TEST_CI_PAT }}
+    with:
+      VERSION_USE_CONFIG_FILE: true
+      VERSION_CONFIG_FILE: ".github/version_config_files/version_config.yaml"
+
+  linter-check:
+    uses: ./.github/workflows/linter.yaml
+    needs: [ calculate-version ]
+
