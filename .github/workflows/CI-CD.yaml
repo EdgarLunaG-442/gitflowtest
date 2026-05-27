@@ -5,9 +5,12 @@ on:
   push:
     branches:
       - 'feature/**'
-      - develop
       - 'release/**'
       - 'hotfix/**'
+
+  pull_request:
+    branches:
+      - develop
       - main
 
     paths-ignore:
