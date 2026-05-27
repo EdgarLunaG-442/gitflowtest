@@ -121,8 +121,8 @@ jobs:
         if: contains(github.event.head_commit.message, env.PUBLISH_TO_REGISTRY_PATTERN) || github.ref == 'refs/heads/develop' || github.ref == 'refs/heads/main' || startsWith(github.ref, 'refs/heads/release')
         run: |
           echo "${{ needs.calculate-version.outputs.version }}" > VERSION
-          git config --local user.email "edgar@users.noreply.github.com"
-          git config --local user.name "edgar[bot]"
+          git config --local user.email "edgartest@users.noreply.github.com"
+          git config --local user.name "edgartest[bot]"
           git commit -m "update version file" -a || echo "No changes to commit"
           git push
 
