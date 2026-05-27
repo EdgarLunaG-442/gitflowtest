@@ -115,6 +115,7 @@ jobs:
                 } catch (createError) {
                   core.setFailed(`Failed to create release: ${createError.message}`);
                 }
+              }
             }
       - name: Update Version File
         if: contains(github.event.head_commit.message, env.PUBLISH_TO_REGISTRY_PATTERN) || github.ref == 'refs/heads/develop' || github.ref == 'refs/heads/main' || startsWith(github.ref, 'refs/heads/release')
