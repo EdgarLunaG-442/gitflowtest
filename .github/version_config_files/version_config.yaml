@@ -2,14 +2,14 @@ branches:
   main:
     regex: ^main$
     increment: Major
-    label: ''
+    tag: ''
     is-main-branch: true
     source-branches: ['release', 'hotfix']
 
   develop:
     regex: ^dev(elop)?(ment)?$
     increment: Minor
-    label: ''
+    tag: ''
     is-main-branch: true
     tracks-release-branches: true
     source-branches: ['main', 'release', 'feature', 'hotfix']
@@ -17,7 +17,7 @@ branches:
   release:
     regex: ^release[/-]
     increment: Major
-    label: beta
+    tag: beta
     prevent-increment-of-merged-branch-version: false
     track-merge-target: true
     tracks-release-branches: false
@@ -27,7 +27,7 @@ branches:
   hotfix:
     regex: ^hotfix[/-]
     increment: Patch
-    label: ''
+    tag: ''
     is-main-branch: true
     track-merge-target: true
     source-branches: ['main']
@@ -35,7 +35,7 @@ branches:
   feature:
     regex: ^feature[/-]
     increment: Inherit
-    label: "feature-{BranchName}"
+    tag: "feature-{BranchName}"
     prevent-increment-of-merged-branch-version: false
     track-merge-target: false
     tracks-release-branches: true
@@ -47,7 +47,7 @@ branches:
     increment: Inherit
     tag-number-pattern: '[/-](?<number>\d+)[-/]'
     mode: ContinuousDeployment
-    label: 'PullRequest-{number}'
+    tag: 'PullRequest-{number}'
     tracks-release-branches: false
     is-release-branch: false
     is-mainline: false
