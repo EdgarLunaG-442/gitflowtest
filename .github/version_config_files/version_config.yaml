@@ -3,14 +3,12 @@ branches:
     regex: ^main$
     increment: Major
     tag: ''
-    is-main-branch: true
     source-branches: ['release', 'hotfix']
 
   develop:
     regex: ^dev(elop)?(ment)?$
     increment: Minor
     tag: ''
-    is-main-branch: true
     tracks-release-branches: true
     source-branches: ['main', 'release', 'feature', 'hotfix']
 
@@ -28,7 +26,6 @@ branches:
     regex: ^hotfix[/-]
     increment: Patch
     tag: ''
-    is-main-branch: true
     track-merge-target: true
     source-branches: ['main']
 
